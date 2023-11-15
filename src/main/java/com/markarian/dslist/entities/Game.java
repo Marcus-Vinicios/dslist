@@ -1,4 +1,5 @@
 package com.markarian.dslist.entities;
+
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -9,7 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="tb_game")
+@Table(name = "tb_game")
 public class Game {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,22 +20,27 @@ public class Game {
   @Column(name = "game_year")
   private Integer year;
   private String genre;
-  private String platform;
-  // private Double score;
+  private String platforms;
+  private Double score;
   private String imgUrl;
+  
+  @Column(columnDefinition = "TEXT")
   private String shortDescription;
+
+  @Column(columnDefinition = "TEXT")
   private String longDescription;
 
   public Game() {
   }
 
-  public Game(Long id, String title, Integer year, String genre, String platform, String imgUrl,
+  public Game(Long id, String title, Double score, Integer year, String genre, String platforms, String imgUrl,
       String shortDescription, String longDescription) {
     this.id = id;
     this.title = title;
+    this.score = score;
     this.year = year;
     this.genre = genre;
-    this.platform = platform;
+    this.platforms = platforms;
     this.imgUrl = imgUrl;
     this.shortDescription = shortDescription;
     this.longDescription = longDescription;
@@ -56,8 +62,8 @@ public class Game {
     return longDescription;
   }
 
-  public String getPlatform() {
-    return platform;
+  public String getPlatforms() {
+    return platforms;
   }
 
   public String getShortDescription() {
@@ -70,6 +76,14 @@ public class Game {
 
   public Integer getYear() {
     return year;
+  }
+
+  public Double getScore() {
+    return score;
+  }
+
+  public void setScore(Double score) {
+    this.score = score;
   }
 
   public void setGenre(String genre) {
@@ -88,8 +102,8 @@ public class Game {
     this.longDescription = longDescription;
   }
 
-  public void setPlatform(String platform) {
-    this.platform = platform;
+  public void setPlatforms(String platforms) {
+    this.platforms = platforms;
   }
 
   public void setShortDescription(String shortDescription) {
