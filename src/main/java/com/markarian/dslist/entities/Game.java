@@ -1,6 +1,6 @@
 package com.markarian.dslist.entities;
 
-import java.util.Objects;
+// import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,7 +23,7 @@ public class Game {
   private String platforms;
   private Double score;
   private String imgUrl;
-  
+
   @Column(columnDefinition = "TEXT")
   private String shortDescription;
 

@@ -10,14 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.markarian.dslist.dto.GameMinDto;
 import com.markarian.dslist.services.GameService;
 
-//Através dos controladores é possivel acessar os serviços da API.
 @RestController
 @RequestMapping(value = "/games")
 public class GameController {
-  
+
   @Autowired
   private GameService gameService;
-  //Injetando/Instanciando um service no controller.
+  // Injetando/Instanciando um service no controller.
 
   @GetMapping
   public List<GameMinDto> findAll() {

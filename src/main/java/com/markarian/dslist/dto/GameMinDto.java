@@ -12,6 +12,8 @@ public class GameMinDto {
   public GameMinDto() {
   }
 
+  // O padrão DTO é responsável por cutomizar/filtrar as informações que serão disponibilizadas pela API.
+
   public GameMinDto(Game entity) {
     id = entity.getId();
     title = entity.getTitle();
