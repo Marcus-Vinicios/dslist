@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.markarian.dslist.dto.GameListDto;
+import com.markarian.dslist.dto.GameMinDto;
 import com.markarian.dslist.services.GameListService;
+import com.markarian.dslist.services.GameService;
 
 @RestController
 @RequestMapping(value = "/lists")
@@ -17,17 +19,20 @@ public class GameListController {
 
   @Autowired
   private GameListService gameListService;
+  
+  @Autowired
+  private GameService gameService;
   // Injetando/Instanciando um service no controller.
-
-  @GetMapping(value = "/{id}")
-  public GameListDto findById(@PathVariable Long id) {
-    GameListDto result = gameListService.findById(id);
-    return result;
-  }
 
   @GetMapping
   public List<GameListDto> findAll() {
     List<GameListDto> result = gameListService.findAll();
+    return result;
+  }
+
+  @GetMapping(value = "/{id}/games")
+  public List<GameMinDto> findByList(@PathVariable Long id) {
+    List<GameMinDto> result = gameService.findByList(id);
     return result;
   }
 }

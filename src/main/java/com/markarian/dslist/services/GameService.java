@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.markarian.dslist.dto.GameDto;
 import com.markarian.dslist.dto.GameMinDto;
 import com.markarian.dslist.entities.Game;
+import com.markarian.dslist.projections.GameMinProjection;
 import com.markarian.dslist.repositories.GameRepository;
 
 @Service
@@ -49,5 +50,11 @@ public class GameService {
     return result.stream().map(data -> new GameMinDto(data)).toList();
     // Retorna uma nova lista com os dados processados, mostrando somente o que foi
     // definido no GameMinDto.
+  }
+
+  @Transactional(readOnly = true)
+  public List<GameMinDto> findByList(Long listId) {
+    List<GameMinProjection> result = gameRepository.searchByList(listId);
+    return result.stream().map(data -> new GameMinDto(data)).toList();
   }
 }
